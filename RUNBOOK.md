@@ -1,6 +1,6 @@
 ﻿# Quick Runbook
 
-This repository contains a ready WPF + SQL Server demo. Use these commands on a clean classroom machine.
+This repository contains a ready WPF + SQL Server application. Use these commands on a clean classroom machine.
 
 ## 1. Clone from Git Bash
 
@@ -71,7 +71,7 @@ Expected output: `All tests passed`.
 dotnet run --project "src/PopryzhenokAgents.App/PopryzhenokAgents.App.csproj"
 ```
 
-## 7. Demo checklist
+## 7. Demonstration checklist
 
 - Show the main agents list window.
 - Check that records are visible immediately after launch.
@@ -80,7 +80,7 @@ dotnet run --project "src/PopryzhenokAgents.App/PopryzhenokAgents.App.csproj"
 - Move pages with the bottom navigation and show the counter.
 - Select a record and use edit/delete behavior.
 - Select one or more records and use the mass update panel.
-- Use `Сбросить данные` if you need to restore the initial demo records after experimenting.
+- Use `Обновить` after database changes. Use `reset-db.ps1` from the console to recreate the SQL Server database.
 
 ## 8. Useful full-path commands after cloning to C:\ExamDemo
 
@@ -90,5 +90,8 @@ dotnet run --project "C:\ExamDemo\sun\src\PopryzhenokAgents.TestRunner\Popryzhen
 powershell -ExecutionPolicy Bypass -File "C:\ExamDemo\sun\database\sqlserver\setup-db.ps1"
 dotnet run --project "C:\ExamDemo\sun\src\PopryzhenokAgents.App\PopryzhenokAgents.App.csproj"
 ```
+
+
+
 
 

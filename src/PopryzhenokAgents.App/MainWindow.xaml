@@ -6,70 +6,34 @@
         MinWidth="980" MinHeight="650"
         FontFamily="Segoe UI"
         Background="White">
-    <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Padding" Value="14,8"/>
-            <Setter Property="Margin" Value="6,0,0,0"/>
-            <Setter Property="FontSize" Value="15"/>
-        </Style>
-        <Style TargetType="ComboBox">
-            <Setter Property="Height" Value="48"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Padding" Value="10,6"/>
-        </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="Height" Value="48"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Padding" Value="12,8"/>
-        </Style>
-    </Window.Resources>
     <DockPanel Margin="28">
         <Grid DockPanel.Dock="Top" Margin="0,0,0,26">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="300"/>
-                <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0"
-                     ToolTip="Введите для поиска"
-                     Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"/>
-            <ComboBox Grid.Column="1" Margin="24,0,0,0"
-                      ItemsSource="{Binding Sorts}"
-                      SelectedItem="{Binding SelectedSort}"/>
-            <ComboBox Grid.Column="2" Margin="24,0,0,0"
-                      ItemsSource="{Binding Types}"
-                      SelectedItem="{Binding SelectedType}"/>
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="300"/><ColumnDefinition Width="250"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Height="48" FontSize="18" Padding="12,8" ToolTip="Введите для поиска" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"/>
+            <ComboBox Grid.Column="1" Height="48" FontSize="18" Margin="24,0,0,0" ItemsSource="{Binding Sorts}" SelectedItem="{Binding SelectedSort}"/>
+            <ComboBox Grid.Column="2" Height="48" FontSize="18" Margin="24,0,0,0" ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}"/>
             <StackPanel Grid.Column="3" Margin="18,0,0,0" Orientation="Horizontal">
-                <Button Content="Добавить" Command="{Binding AddCommand}"/>
-                <Button Content="Изменить" Command="{Binding EditCommand}"/>
-                <Button Content="Удалить" Command="{Binding DeleteCommand}"/>
-                <Button Content="Сбросить данные" Command="{Binding ResetCommand}"/>
+                <Button Content="Добавить" Command="{Binding AddCommand}" Padding="12,8"/>
+                <Button Content="Изменить" Command="{Binding EditCommand}" Padding="12,8" Margin="6,0,0,0"/>
+                <Button Content="История" Command="{Binding HistoryCommand}" Padding="12,8" Margin="6,0,0,0"/>
+                <Button Content="Удалить" Command="{Binding DeleteCommand}" Padding="12,8" Margin="6,0,0,0"/>
+                <Button Content="Обновить" Command="{Binding RefreshCommand}" Padding="12,8" Margin="6,0,0,0"/>
             </StackPanel>
         </Grid>
-
         <Grid DockPanel.Dock="Bottom" Margin="0,18,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal">
                 <TextBlock VerticalAlignment="Center" FontSize="16" Text="Приоритет:"/>
                 <TextBox Width="100" Margin="10,0,0,0" Height="36" FontSize="15" Text="{Binding MassValue}"/>
-                <Button Content="Изменить у выбранных" Command="{Binding MassCommand}"/>
+                <Button Content="Изменить у выбранных" Command="{Binding MassCommand}" Padding="12,7" Margin="8,0,0,0"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Content="&lt;" Command="{Binding PrevCommand}"/>
-                <TextBlock MinWidth="170" TextAlignment="Center" FontSize="18" VerticalAlignment="Center" Text="{Binding Counter}"/>
-                <Button Content="&gt;" Command="{Binding NextCommand}"/>
+                <Button Content="&lt;" Command="{Binding PrevCommand}" Padding="14,7"/>
+                <TextBlock MinWidth="190" TextAlignment="Center" FontSize="18" VerticalAlignment="Center" Text="{Binding Counter}"/>
+                <Button Content="&gt;" Command="{Binding NextCommand}" Padding="14,7"/>
             </StackPanel>
         </Grid>
-
-        <ListView x:Name="AgentsList"
-                  BorderThickness="0"
-                  SelectionMode="Extended"
-                  ItemsSource="{Binding PageItems}"
-                  SelectedItem="{Binding Selected}">
+        <ListView x:Name="AgentsList" BorderThickness="0" SelectionMode="Extended" ItemsSource="{Binding PageItems}" SelectedItem="{Binding Selected}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -81,36 +45,18 @@
                 <DataTemplate>
                     <Border BorderBrush="#111" BorderThickness="1.2" Background="{Binding Highlight}">
                         <Grid MinHeight="154">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="235"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="190"/>
-                            </Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="235"/><ColumnDefinition Width="*"/><ColumnDefinition Width="190"/></Grid.ColumnDefinitions>
                             <Border Background="#eeeeee" BorderBrush="#ddd" BorderThickness="0,0,1,0">
                                 <Image Source="resources/picture.png" Stretch="Uniform" Margin="18"/>
                             </Border>
                             <StackPanel Grid.Column="1" Margin="28,0,0,0" VerticalAlignment="Center">
-                                <TextBlock FontSize="28" FontWeight="SemiBold" TextWrapping="Wrap">
-                                    <Run Text="{Binding Type}"/>
-                                    <Run Text=" | "/>
-                                    <Run Text="{Binding Title}"/>
-                                </TextBlock>
-                                <TextBlock FontSize="21" Margin="0,8,0,0">
-                                    <Run Text="{Binding SalesCount365}"/>
-                                    <Run Text=" продаж за год"/>
-                                </TextBlock>
+                                <TextBlock FontSize="28" FontWeight="SemiBold" TextWrapping="Wrap"><Run Text="{Binding Type}"/><Run Text=" | "/><Run Text="{Binding Title}"/></TextBlock>
+                                <TextBlock FontSize="21" Margin="0,8,0,0"><Run Text="{Binding SalesCount365, Mode=OneWay}"/><Run Text=" продаж за год"/></TextBlock>
                                 <TextBlock FontSize="21" Text="{Binding Phone}"/>
-                                <TextBlock FontSize="21">
-                                    <Run Text="Приоритетность: "/>
-                                    <Run Text="{Binding Priority}"/>
-                                </TextBlock>
+                                <TextBlock FontSize="21"><Run Text="Приоритетность: "/><Run Text="{Binding Priority}"/></TextBlock>
                                 <TextBlock FontSize="13" Foreground="#555" TextWrapping="Wrap" Text="{Binding Email}"/>
                             </StackPanel>
-                            <TextBlock Grid.Column="2"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center"
-                                       FontSize="42"
-                                       Text="{Binding Discount, StringFormat={}{0}%}"/>
+                            <TextBlock Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" Text="{Binding Discount, StringFormat={}{0}%, Mode=OneWay}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

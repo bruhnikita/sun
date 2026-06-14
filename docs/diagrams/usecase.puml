@@ -1,9 +1,18 @@
 ﻿@startuml
+left to right direction
 actor Operator
-rectangle "Popryzhenok Agents" {
-Operator -- (View Agent list)
-Operator -- (Search sort filter)
-Operator -- (Add edit delete)
-Operator -- (Mass update)
+rectangle "Agents application" {
+  Operator -- (View agents)
+  Operator -- (Search by title, email, phone)
+  Operator -- (Sort by title, discount, priority)
+  Operator -- (Filter by agent type)
+  Operator -- (Calculate sales for last 365 days)
+  Operator -- (Calculate discount by realization amount)
+  Operator -- (Add agent)
+  Operator -- (Edit agent)
+  Operator -- (View product sale history)
+  Operator -- (Replace logo)
+  Operator -- (Bulk update priority)
+  Operator -- (Delete with dependency rules)
 }
 @enduml

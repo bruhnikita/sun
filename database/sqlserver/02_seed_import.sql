@@ -107,3 +107,28 @@ INSERT INTO dbo.Agent(Title,AgentTypeID,Address,INN,KPP,DirectorName,Phone,Email
 INSERT INTO dbo.Agent(Title,AgentTypeID,Address,INN,KPP,DirectorName,Phone,Email,Logo,Priority) SELECT N'ЖелДорДизайнМетизТраст',ID,N'170549, Сахалинская область, город Видное, проезд Космонавтов, 89','7669116841','906390137',N'Игорь Львович Агафонова',N'(812) 123-63-47',N'lnikitina@kulikova.com',N'picture.png',290 FROM dbo.AgentType WHERE Title=N'ПАО';
 INSERT INTO dbo.Agent(Title,AgentTypeID,Address,INN,KPP,DirectorName,Phone,Email,Logo,Priority) SELECT N'БухМясМоторПром',ID,N'677498, Костромская область, город Зарайск, спуск Славы, 59','7377410338','592041317',N'Нина Дмитриевна Черноваа',N'(35222) 83-23-59',N'varvara49@savin.ru',N'picture.png',158 FROM dbo.AgentType WHERE Title=N'ОАО';
 
+
+INSERT INTO dbo.ProductType(Title, DefectedPercent) VALUES(N'Демо продукция', 0);
+INSERT INTO dbo.Product(Title, ProductTypeID, ArticleNumber, Description, Image, ProductionPersonCount, ProductionWorkshopNumber, MinCostForAgent)
+VALUES(N'Пружинка', 1, N'P0001', N'Продукция для проверки реализаций', N'picture.png', 1, 1, 2500),
+      (N'Набор прыжковый', 1, N'P0002', N'Продукция для истории продаж', N'picture.png', 2, 1, 7500);
+
+INSERT INTO dbo.ProductSale(AgentID, ProductID, SaleDate, ProductCount)
+SELECT TOP (60)
+    a.ID,
+    CASE WHEN a.ID % 2 = 0 THEN 1 ELSE 2 END,
+    DATEADD(DAY, -(a.ID * 5) % 360, CAST(GETDATE() AS date)),
+    5 + (a.ID % 40)
+FROM dbo.Agent a
+ORDER BY a.ID;
+
+INSERT INTO dbo.Shop(Title, Address, AgentID)
+SELECT TOP (20) N'Точка продаж ' + CAST(ID AS nvarchar(10)), Address, ID
+FROM dbo.Agent
+ORDER BY ID DESC;
+
+INSERT INTO dbo.AgentPriorityHistory(AgentID, ChangeDate, PriorityValue)
+SELECT TOP (30) ID, DATEADD(DAY, -ID, GETDATE()), Priority
+FROM dbo.Agent
+ORDER BY ID;
+GO

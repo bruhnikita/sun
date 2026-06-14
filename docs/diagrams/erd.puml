@@ -1,9 +1,48 @@
 ﻿@startuml
-entity Agent
-entity Type
-entity Product
-entity History
-Agent }o--|| Type
-Agent ||--o{ History
-Product }o--o{ Agent
+entity Agent {
+  * ID : int
+  --
+  Title : nvarchar
+  AgentTypeID : int
+  Phone : nvarchar
+  Email : nvarchar
+  Priority : int
+}
+entity AgentType {
+  * ID : int
+  --
+  Title : nvarchar
+}
+entity AgentPriorityHistory {
+  * ID : int
+  --
+  AgentID : int
+  ChangeDate : datetime
+  PriorityValue : int
+}
+entity Shop {
+  * ID : int
+  --
+  AgentID : int
+  Title : nvarchar
+}
+entity ProductSale {
+  * ID : int
+  --
+  AgentID : int
+  ProductID : int
+  SaleDate : date
+  ProductCount : int
+}
+entity Product {
+  * ID : int
+  --
+  Title : nvarchar
+  MinCostForAgent : decimal
+}
+Agent }o--|| AgentType
+Agent ||--o{ AgentPriorityHistory
+Agent ||--o{ Shop
+Agent ||--o{ ProductSale
+Product ||--o{ ProductSale
 @enduml
