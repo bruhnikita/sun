@@ -1,0 +1,1 @@
+﻿using Exam.Core; namespace Exam.Tests; public static class AgentTests{public static void Run(){if(ListTools.DiscountBySales(9999)!=0)throw new Exception("discount 0 failed");if(ListTools.DiscountBySales(500000)!=25)throw new Exception("discount 25 failed");if(ListTools.Page(new[]{1,2,3},2,2).Single()!=3)throw new Exception("paging failed");}}

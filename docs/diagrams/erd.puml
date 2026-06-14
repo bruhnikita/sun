@@ -1,0 +1,9 @@
+﻿@startuml
+entity Agent
+entity Type
+entity Product
+entity History
+Agent }o--|| Type
+Agent ||--o{ History
+Product }o--o{ Agent
+@enduml

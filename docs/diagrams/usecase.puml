@@ -1,0 +1,9 @@
+﻿@startuml
+actor Operator
+rectangle "Popryzhenok Agents" {
+Operator -- (View Agent list)
+Operator -- (Search sort filter)
+Operator -- (Add edit delete)
+Operator -- (Mass update)
+}
+@enduml
