@@ -1,8 +1,8 @@
-﻿# Quick Runbook
+﻿# Краткая инструкция запуска
 
-This repository contains a ready WPF + SQL Server application. Use these commands on a clean classroom machine.
+В этом репозитории лежит готовое WPF-приложение с SQL Server. Инструкция рассчитана на чистый компьютер в аудитории.
 
-## 1. Clone from Git Bash
+## 1. Клонирование из Git Bash
 
 ```bash
 mkdir -p /c/ExamDemo
@@ -11,87 +11,92 @@ git clone https://github.com/bruhnikita/sun.git
 cd sun
 ```
 
-If Git asks for credentials, use GitHub username `bruhnikita`. For the password field use a GitHub token, not the account password. If Git Credential Manager opens a browser, finish the browser login and repeat the clone if needed.
+Если Git попросит логин, используй имя пользователя GitHub `bruhnikita`. В поле пароля нужен GitHub token, а не пароль от аккаунта. Если откроется окно Git Credential Manager, заверши вход в браузере и при необходимости повтори `git clone`.
 
-## Optional cleanup after cloning
+## 2. Удаление этой подсказки после клонирования
 
-If you want to remove this helper file from the local exam folder after cloning, run:
+Файл можно удалить из локальной папки экзамена, чтобы он не был виден при демонстрации:
 
 ```bash
 rm RUNBOOK.md
 ```
 
-This only removes the local instruction file. It does not affect GitHub.
-## 2. Check tools
+Удаление затронет только локальную папку. На GitHub файл останется.
+
+## 3. Проверка инструментов
 
 ```bash
 git --version
 dotnet --version
 ```
 
-For database deployment SQL Server must be running, and `sqlcmd` must be available. By default scripts use `.\SQLEXPRESS`.
+Для развёртывания базы должен быть запущен SQL Server, а команда `sqlcmd` должна быть доступна из консоли. По умолчанию скрипты используют экземпляр `.\SQLEXPRESS`.
 
-To use another instance from Git Bash:
+Если в аудитории используется другой экземпляр SQL Server, укажи его перед запуском скрипта:
 
 ```bash
 export SQLSERVER='localhost'
 ```
 
-## 3. Deploy database
+или, например:
 
-From Git Bash:
+```bash
+export SQLSERVER='localhost\SQLEXPRESS'
+```
+
+## 4. Развёртывание базы данных
+
+Из Git Bash, находясь в папке проекта:
 
 ```bash
 powershell.exe -ExecutionPolicy Bypass -File "database/sqlserver/setup-db.ps1"
 ```
 
-To recreate the database from scratch:
+Если нужно пересоздать базу с нуля:
 
 ```bash
 powershell.exe -ExecutionPolicy Bypass -File "database/sqlserver/reset-db.ps1"
 ```
 
-## 4. Build
+## 5. Сборка проекта
 
 ```bash
 dotnet build "src/PopryzhenokAgents.sln"
 ```
 
-## 5. Run checks
+## 6. Проверка логики
 
 ```bash
 dotnet run --project "src/PopryzhenokAgents.TestRunner/PopryzhenokAgents.TestRunner.csproj"
 ```
 
-Expected output: `All tests passed`.
+Ожидаемый вывод: `All tests passed`.
 
-## 6. Start the application
+## 7. Запуск приложения
 
 ```bash
 dotnet run --project "src/PopryzhenokAgents.App/PopryzhenokAgents.App.csproj"
 ```
 
-## 7. Demonstration checklist
+## 8. Что показать на демонстрации
 
-- Show the main agents list window.
-- Check that records are visible immediately after launch.
-- Demonstrate search in the top input.
-- Demonstrate sorting and type filtering.
-- Move pages with the bottom navigation and show the counter.
-- Select a record and use edit/delete behavior.
-- Select one or more records and use the mass update panel.
-- Use `Обновить` after database changes. Use `reset-db.ps1` from the console to recreate the SQL Server database.
+- Главное окно со списком агентов.
+- Записи загружаются из SQL Server сразу после запуска.
+- Поиск по верхнему полю.
+- Сортировку и фильтр по типу агента.
+- Переход по страницам и счётчик записей внизу.
+- Добавление и редактирование агента.
+- Замену логотипа агента.
+- Просмотр истории продаж.
+- Удаление агента и блокировку удаления при наличии продаж.
+- Массовое изменение приоритета.
+- Кнопку `Обновить` после изменений в базе.
 
-## 8. Useful full-path commands after cloning to C:\ExamDemo
+## 9. Команды с полными путями для папки C:\ExamDemo\sun
 
 ```powershell
+powershell -ExecutionPolicy Bypass -File "C:\ExamDemo\sun\database\sqlserver\setup-db.ps1"
 dotnet build "C:\ExamDemo\sun\src\PopryzhenokAgents.sln"
 dotnet run --project "C:\ExamDemo\sun\src\PopryzhenokAgents.TestRunner\PopryzhenokAgents.TestRunner.csproj"
-powershell -ExecutionPolicy Bypass -File "C:\ExamDemo\sun\database\sqlserver\setup-db.ps1"
 dotnet run --project "C:\ExamDemo\sun\src\PopryzhenokAgents.App\PopryzhenokAgents.App.csproj"
 ```
-
-
-
-
-

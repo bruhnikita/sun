@@ -108,10 +108,10 @@ INSERT INTO dbo.Agent(Title,AgentTypeID,Address,INN,KPP,DirectorName,Phone,Email
 INSERT INTO dbo.Agent(Title,AgentTypeID,Address,INN,KPP,DirectorName,Phone,Email,Logo,Priority) SELECT N'БухМясМоторПром',ID,N'677498, Костромская область, город Зарайск, спуск Славы, 59','7377410338','592041317',N'Нина Дмитриевна Черноваа',N'(35222) 83-23-59',N'varvara49@savin.ru',N'picture.png',158 FROM dbo.AgentType WHERE Title=N'ОАО';
 
 
-INSERT INTO dbo.ProductType(Title, DefectedPercent) VALUES(N'Демо продукция', 0);
+INSERT INTO dbo.ProductType(Title, DefectedPercent) VALUES(N'Готовая продукция', 0);
 INSERT INTO dbo.Product(Title, ProductTypeID, ArticleNumber, Description, Image, ProductionPersonCount, ProductionWorkshopNumber, MinCostForAgent)
-VALUES(N'Пружинка', 1, N'P0001', N'Продукция для проверки реализаций', N'picture.png', 1, 1, 2500),
-      (N'Набор прыжковый', 1, N'P0002', N'Продукция для истории продаж', N'picture.png', 2, 1, 7500);
+VALUES(N'Пружинка', 1, N'P0001', N'Основная продукция для продаж', N'picture.png', 1, 1, 2500),
+      (N'Набор прыжковый', 1, N'P0002', N'Продукция с историей продаж', N'picture.png', 2, 1, 7500);
 
 INSERT INTO dbo.ProductSale(AgentID, ProductID, SaleDate, ProductCount)
 SELECT TOP (60)
@@ -132,3 +132,4 @@ SELECT TOP (30) ID, DATEADD(DAY, -ID, GETDATE()), Priority
 FROM dbo.Agent
 ORDER BY ID;
 GO
+

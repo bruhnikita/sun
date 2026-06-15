@@ -1,18 +1,18 @@
-﻿# Test cases - agents
+﻿# Тест-кейсы — агенты
 
-| ID | Scenario | Steps | Expected result |
+| ID | Сценарий | Действия | Ожидаемый результат |
 |---|---|---|---|
-| TC-01 | Database setup | Run `setup-db.ps1` | SQL Server database is created and seeded |
-| TC-02 | Open list | Start the app after DB setup | Agent list opens from SQL Server, 10 records per page |
-| TC-03 | Search | Enter part of agent name, email, or phone | Only matching agents remain; counter changes |
-| TC-04 | Sort by name | Select name sort | Agents are ordered by title |
-| TC-05 | Sort by discount | Select discount sort | Agents are ordered by calculated discount |
-| TC-06 | Sort by priority | Select priority sort | Agents are ordered by Priority |
-| TC-07 | Filter by type | Select an agent type | Only agents of selected type are shown; All types resets filter |
-| TC-08 | Discount calculation | Inspect agents with different sales totals | Discount follows 0/5/10/20/25 percent thresholds |
-| TC-09 | Highlight 25 percent | Find agent with discount >= 25 | Card background is light green |
-| TC-10 | Mass priority update | Select rows, enter value, click update | Selected Priority values are updated in SQL Server and history rows are added |
-| TC-11 | Add/edit agent | Use Add or Edit and save | Agent row is saved in SQL Server |
-| TC-12 | Product sale history | Select agent and click History | ProductSale rows are displayed |
-| TC-13 | Replace logo | Use logo replacement in edit form | Selected file is copied to resources/images and relative path is saved |
-| TC-14 | Delete rule | Delete agent with ProductSale dependency | Deletion is blocked; agents without sales delete shops/priority history first |
+| TC-01 | Развёртывание базы | Запустить `setup-db.ps1` | База SQL Server создана и заполнена начальными данными |
+| TC-02 | Открытие списка | Запустить приложение после развёртывания БД | Открывается список агентов из SQL Server, по 10 записей на странице |
+| TC-03 | Поиск | Ввести часть названия агента, email или телефона | Остаются только подходящие агенты, счётчик меняется |
+| TC-04 | Сортировка по названию | Выбрать сортировку по названию | Агенты упорядочены по названию |
+| TC-05 | Сортировка по скидке | Выбрать сортировку по скидке | Агенты упорядочены по рассчитанной скидке |
+| TC-06 | Сортировка по приоритету | Выбрать сортировку по приоритету | Агенты упорядочены по `Priority` |
+| TC-07 | Фильтр по типу | Выбрать тип агента | Показаны только агенты выбранного типа; `Все типы` сбрасывает фильтр |
+| TC-08 | Расчёт скидки | Проверить агентов с разными суммами продаж | Скидка считается по порогам 0/5/10/20/25 процентов |
+| TC-09 | Подсветка скидки 25% | Найти агента со скидкой 25% или выше | Карточка подсвечена светло-зелёным цветом |
+| TC-10 | Массовое изменение приоритета | Выбрать записи, ввести значение, нажать обновление | У выбранных агентов обновлён `Priority`, в SQL Server добавлены записи истории |
+| TC-11 | Добавление и редактирование | Использовать `Добавить` или `Изменить`, затем сохранить | Агент сохранён в SQL Server |
+| TC-12 | История продаж | Выбрать агента и нажать кнопку истории | Отображаются записи `ProductSale` выбранного агента |
+| TC-13 | Замена логотипа | Выбрать файл логотипа в форме редактирования | Файл скопирован в `resources/images`, относительный путь сохранён в базе |
+| TC-14 | Правило удаления | Удалить агента, у которого есть продажи в `ProductSale` | Удаление заблокировано; агент без продаж удаляет магазины и историю приоритетов |

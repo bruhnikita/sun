@@ -1,5 +1,5 @@
 ﻿@startuml
-entity Agent {
+entity "Агент" as Agent {
   * ID : int
   --
   Title : nvarchar
@@ -8,25 +8,25 @@ entity Agent {
   Email : nvarchar
   Priority : int
 }
-entity AgentType {
+entity "Тип агента" as AgentType {
   * ID : int
   --
   Title : nvarchar
 }
-entity AgentPriorityHistory {
+entity "История приоритетов" as AgentPriorityHistory {
   * ID : int
   --
   AgentID : int
   ChangeDate : datetime
   PriorityValue : int
 }
-entity Shop {
+entity "Магазин" as Shop {
   * ID : int
   --
   AgentID : int
   Title : nvarchar
 }
-entity ProductSale {
+entity "Продажа продукции" as ProductSale {
   * ID : int
   --
   AgentID : int
@@ -34,7 +34,7 @@ entity ProductSale {
   SaleDate : date
   ProductCount : int
 }
-entity Product {
+entity "Продукция" as Product {
   * ID : int
   --
   Title : nvarchar

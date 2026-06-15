@@ -1,18 +1,18 @@
 ﻿@startuml
 left to right direction
-actor Operator
-rectangle "Agents application" {
-  Operator -- (View agents)
-  Operator -- (Search by title, email, phone)
-  Operator -- (Sort by title, discount, priority)
-  Operator -- (Filter by agent type)
-  Operator -- (Calculate sales for last 365 days)
-  Operator -- (Calculate discount by realization amount)
-  Operator -- (Add agent)
-  Operator -- (Edit agent)
-  Operator -- (View product sale history)
-  Operator -- (Replace logo)
-  Operator -- (Bulk update priority)
-  Operator -- (Delete with dependency rules)
+actor "Оператор" as Operator
+rectangle "Приложение учёта агентов" {
+  Operator -- (Просмотр агентов)
+  Operator -- (Поиск по названию, email и телефону)
+  Operator -- (Сортировка по названию, скидке и приоритету)
+  Operator -- (Фильтр по типу агента)
+  Operator -- (Расчёт продаж за последние 365 дней)
+  Operator -- (Расчёт скидки по сумме реализации)
+  Operator -- (Добавление агента)
+  Operator -- (Редактирование агента)
+  Operator -- (Просмотр истории продаж)
+  Operator -- (Замена логотипа)
+  Operator -- (Массовое изменение приоритета)
+  Operator -- (Удаление с проверкой зависимостей)
 }
 @enduml
