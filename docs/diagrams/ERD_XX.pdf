@@ -1,10 +1,108 @@
-%PDF-1.1
-1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj
-2 0 obj<</Type/Pages/Count 1/Kids[3 0 R]>>endobj
-3 0 obj<</Type/Page/Parent 2 0 R/MediaBox[0 0 612 792]/Contents 4 0 R/Resources<</Font<</F1 5 0 R>>>>>>endobj
-4 0 obj<</Length 72>>stream
-BT /F1 16 Tf 72 720 Td (ERD diagram) Tj 0 -24 Td (See PlantUML source in this folder.) Tj ET
-endstream endobj
-5 0 obj<</Type/Font/Subtype/Type1/BaseFont/Helvetica>>endobj
-trailer<</Root 1 0 R>>
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 842 595] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Length 3041 >>
+stream
+BT /F2 18 Tf 36 558 Td (ERD - Agents module) Tj ET
+q 0.94 0.97 1 rg 70 390 150 100 re f Q
+1.2 w 0.16 0.24 0.34 RG 70 390 150 100 re S
+BT /F2 10 Tf 78 473 Td (AgentType) Tj ET
+0.5 w 0.55 0.6 0.65 RG 76 465 m 214 465 l S
+BT /F1 8 Tf 78 451 Td (ID PK) Tj ET
+BT /F1 8 Tf 78 439 Td (Title) Tj ET
+BT /F1 8 Tf 78 427 Td (Image) Tj ET
+q 0.94 0.97 1 rg 300 360 195 150 re f Q
+1.2 w 0.16 0.24 0.34 RG 300 360 195 150 re S
+BT /F2 10 Tf 308 493 Td (Agent) Tj ET
+0.5 w 0.55 0.6 0.65 RG 306 485 m 489 485 l S
+BT /F1 8 Tf 308 471 Td (ID PK) Tj ET
+BT /F1 8 Tf 308 459 Td (Title) Tj ET
+BT /F1 8 Tf 308 447 Td (AgentTypeID FK) Tj ET
+BT /F1 8 Tf 308 435 Td (INN) Tj ET
+BT /F1 8 Tf 308 423 Td (KPP) Tj ET
+BT /F1 8 Tf 308 411 Td (Phone) Tj ET
+BT /F1 8 Tf 308 399 Td (Email) Tj ET
+BT /F1 8 Tf 308 387 Td (Priority) Tj ET
+q 0.94 0.97 1 rg 590 405 160 95 re f Q
+1.2 w 0.16 0.24 0.34 RG 590 405 160 95 re S
+BT /F2 10 Tf 598 483 Td (Shop) Tj ET
+0.5 w 0.55 0.6 0.65 RG 596 475 m 744 475 l S
+BT /F1 8 Tf 598 461 Td (ID PK) Tj ET
+BT /F1 8 Tf 598 449 Td (Title) Tj ET
+BT /F1 8 Tf 598 437 Td (Address) Tj ET
+BT /F1 8 Tf 598 425 Td (AgentID FK) Tj ET
+q 0.94 0.97 1 rg 590 265 170 95 re f Q
+1.2 w 0.16 0.24 0.34 RG 590 265 170 95 re S
+BT /F2 10 Tf 598 343 Td (AgentPriorityHistory) Tj ET
+0.5 w 0.55 0.6 0.65 RG 596 335 m 754 335 l S
+BT /F1 8 Tf 598 321 Td (ID PK) Tj ET
+BT /F1 8 Tf 598 309 Td (AgentID FK) Tj ET
+BT /F1 8 Tf 598 297 Td (ChangeDate) Tj ET
+BT /F1 8 Tf 598 285 Td (PriorityValue) Tj ET
+q 0.94 0.97 1 rg 300 170 195 95 re f Q
+1.2 w 0.16 0.24 0.34 RG 300 170 195 95 re S
+BT /F2 10 Tf 308 248 Td (ProductSale) Tj ET
+0.5 w 0.55 0.6 0.65 RG 306 240 m 489 240 l S
+BT /F1 8 Tf 308 226 Td (ID PK) Tj ET
+BT /F1 8 Tf 308 214 Td (AgentID FK) Tj ET
+BT /F1 8 Tf 308 202 Td (ProductID FK) Tj ET
+BT /F1 8 Tf 308 190 Td (SaleDate) Tj ET
+BT /F1 8 Tf 308 178 Td (ProductCount) Tj ET
+q 0.94 0.97 1 rg 70 70 150 105 re f Q
+1.2 w 0.16 0.24 0.34 RG 70 70 150 105 re S
+BT /F2 10 Tf 78 158 Td (Product) Tj ET
+0.5 w 0.55 0.6 0.65 RG 76 150 m 214 150 l S
+BT /F1 8 Tf 78 136 Td (ID PK) Tj ET
+BT /F1 8 Tf 78 124 Td (ProductTypeID FK) Tj ET
+BT /F1 8 Tf 78 112 Td (Title) Tj ET
+BT /F1 8 Tf 78 100 Td (MinCostForAgent) Tj ET
+q 0.94 0.97 1 rg 70 230 150 90 re f Q
+1.2 w 0.16 0.24 0.34 RG 70 230 150 90 re S
+BT /F2 10 Tf 78 303 Td (ProductType) Tj ET
+0.5 w 0.55 0.6 0.65 RG 76 295 m 214 295 l S
+BT /F1 8 Tf 78 281 Td (ID PK) Tj ET
+BT /F1 8 Tf 78 269 Td (Title) Tj ET
+BT /F1 8 Tf 78 257 Td (DefectedPercent) Tj ET
+0.9 w 0.1 0.1 0.1 RG 220 440 m 300 435 l S
+BT /F1 7 Tf 240 441,5 Td (1..*) Tj ET
+0.9 w 0.1 0.1 0.1 RG 495 430 m 590 452 l S
+BT /F1 7 Tf 522,5 445 Td (1..*) Tj ET
+0.9 w 0.1 0.1 0.1 RG 495 390 m 590 312 l S
+BT /F1 7 Tf 522,5 355 Td (1..*) Tj ET
+0.9 w 0.1 0.1 0.1 RG 398 360 m 398 265 l S
+BT /F1 7 Tf 378 316,5 Td (1..*) Tj ET
+0.9 w 0.1 0.1 0.1 RG 300 210 m 220 122 l S
+BT /F1 7 Tf 240 170 Td (1..*) Tj ET
+0.9 w 0.1 0.1 0.1 RG 145 230 m 145 175 l S
+BT /F1 7 Tf 125 206,5 Td (1..*) Tj ET
+BT /F1 8 Tf 36 32 Td (Primary source: erd.puml. Database scripts: database/sqlserver/*.sql) Tj ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000000321 00000 n 
+0000000396 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3489
 %%EOF

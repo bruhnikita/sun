@@ -1,4 +1,6 @@
-﻿CREATE OR ALTER VIEW dbo.vAgentList AS
+﻿USE [PopryzhenokAgents];
+GO
+CREATE OR ALTER VIEW dbo.vAgentList AS
 SELECT
     a.*,
     at.Title AS AgentTypeTitle,
@@ -23,3 +25,4 @@ OUTER APPLY (
       AND ps.SaleDate >= DATEADD(DAY, -365, CAST(GETDATE() AS date))
 ) s;
 GO
+
